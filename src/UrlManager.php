@@ -1,4 +1,5 @@
 <?php
+namespace Ispahbod\UrlManager;
 
 final class UrlManager
 {
