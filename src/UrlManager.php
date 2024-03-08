@@ -1,4 +1,5 @@
 <?php
+namespace Ispahbod\UrlManager;
 
 final class UrlManager
 {
@@ -99,7 +100,7 @@ final class UrlManager
         return $domain === $domainToCompare;
     }
 
-    public static function GetPathComponent(string $url, int $index): string
+    public static function GetPathComponent(string $url, int $index): ?string
     {
         // Parse the URL
         $parsedLink = self::ParseUrl($url);
@@ -108,10 +109,10 @@ final class UrlManager
         $pathComponents = $parsedLink['path_components'] ?? [];
 
         // Return the component at the given index, or an empty string if not found
-        return $pathComponents[$index] ?? '';
+        return $pathComponents[$index] ?? null;
     }
 
-    public static function GetQueryParameter(string $url, string $parameter): string
+    public static function GetQueryParameter(string $url, string $parameter): ?string
     {
         // Parse the URL
         $parsedLink = self::ParseUrl($url);
@@ -120,7 +121,7 @@ final class UrlManager
         $queryParameters = $parsedLink['query_parameters'] ?? [];
 
         // Return the value of the specified parameter, or an empty string if not found
-        return $queryParameters[$parameter] ?? '';
+        return $queryParameters[$parameter] ?? null;
     }
 
     public static function HasQueryParameter(string $url, string $parameter): bool
@@ -159,13 +160,13 @@ final class UrlManager
         return count($pathComponents);
     }
 
-    public static function GetPath(string $url): string
+    public static function GetPath(string $url): ?string
     {
         // Parse the URL
         $parsedLink = self::ParseUrl($url);
 
         // Get path
-        $path = $parsedLink['path'] ?? '';
+        $path = $parsedLink['path'] ?? null;
 
         return $path;
     }
