@@ -23,7 +23,7 @@ final class UrlManager
         }
         return true;
     }
-    
+
     public static function parseUrl($link): array
     {
         if (!self::isValidUrl($link)) {
@@ -64,7 +64,7 @@ final class UrlManager
     public static function isDomainEqualTo(string $url, string $domainToCompare): bool
     {
         $parsedLink = self::parseUrl($url);
-        $domain = $parsedLink['domain'];
+        $domain = $parsedLink['domain'] ?? '';
         return $domain === $domainToCompare;
     }
 
