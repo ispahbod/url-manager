@@ -64,7 +64,7 @@ final class UrlManager
     public static function isDomainEqualTo(string $url, string $domainToCompare): bool
     {
         $parsedLink = self::parseUrl($url);
-        $domain = $parsedLink['domain'] ?? '';
+        $domain = $parsedLink['domain'];
         return $domain === $domainToCompare;
     }
 
@@ -106,7 +106,7 @@ final class UrlManager
     public static function getPath(string $url): ?string
     {
         $parsedLink = self::parseUrl($url);
-        return $parsedLink['path'] ?? null;
+        return implode('/',$parsedLink['path_components']) ?? null;
     }
 
     public static function searchInPath(string $url, string $searchString): bool
